@@ -1,6 +1,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { EXPERIENCE } from "./data/experience";
 
 type Project = {
   id: string;
@@ -11,6 +12,12 @@ type Project = {
   links: { github?: string; demo?: string };
 };
 
+// helper to format dates quickly
+function fmt(ym: string | undefined) {
+  if (!ym) return "Present";
+  const [y, m] = ym.split("-").map(Number);
+  return new Date(y, (m ?? 1) - 1).toLocaleString(undefined, { month: "short", year: "numeric" });
+}
 // --- Replace this with your real data later ---
 const PROJECTS: Project[] = [
   {
@@ -102,6 +109,7 @@ export default function App() {
           </a>
           <nav className="hidden md:flex gap-6 text-sm">
             <a href="#projects" className="hover:text-white/90">Projects</a>
+            <a href="#experience" className="hover:text-white/90">Experience</a>
             <a href="#about" className="hover:text-white/90">About</a>
             <a href="#contact" className="hover:text-white/90">Contact</a>
             <a 
@@ -242,7 +250,49 @@ export default function App() {
           ))}
         </div>
       </section>
-
+          {/* Experience */}
+<section id="experience" className="mx-auto max-w-6xl px-4 py-16">
+  <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Experience</h2>
+  <div className="mt-8 relative">
+    {/* vertical line */}
+    <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-neutral-800" />
+    <ul className="space-y-8">
+      {EXPERIENCE.map((job, i) => (
+        <li key={i} className="relative pl-10 md:pl-14">
+          {/* dot */}
+          <span className="absolute left-3 md:left-5 top-1.5 h-2.5 w-2.5 rounded-full bg-white ring-4 ring-neutral-900 border border-neutral-800" />
+          <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 className="font-semibold leading-tight">{job.title}</h3>
+              <span className="text-neutral-400">·</span>
+              <div className="text-neutral-300">{job.company}</div>
+              {job.location && (
+                <>
+                  <span className="text-neutral-400">·</span>
+                  <div className="text-neutral-400">{job.location}</div>
+                </>
+              )}
+            </div>
+            <div className="mt-1 text-sm text-neutral-400">
+              {fmt(job.start)} — {fmt(job.end)}
+              {job.employmentType ? ` · ${job.employmentType}` : ""}
+            </div>
+            <ul className="mt-3 list-disc pl-5 space-y-1.5 text-neutral-300 text-sm">
+              {job.bullets.map((b, idx) => <li key={idx}>{b}</li>)}
+            </ul>
+            {job.skills && job.skills.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {job.skills.map((s) => (
+                  <span key={s} className="text-xs border border-neutral-700 px-2 py-0.5 rounded-full">{s}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
       {/* About */}
       <section id="about" className="mx-auto max-w-6xl px-4 pb-8">
         <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6">
