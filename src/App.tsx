@@ -27,33 +27,43 @@ const PROJECTS: Project[] = [
   },
   {
     id: "lila-bot",
-    title: "Lila-bot: Mood-aware ChatGPT Wrapper",
+    title: "Mood-aware ChatGPT Wrapper",
     year: 2025,
     tags: ["FastAPI", "React", "OpenAI API", "Session Memory"],
     blurb:
-      "Custom web client that tracks mood per message and supports journal mode.",
+      "Custom web client that tracks mood per message, supports journal mode, remembers the whole conversation, and many frontend customization",
     links: {
       github: "https://github.com/SharjeelAhmed2/Chat-GPT-Wrapper",
     },
   },
   {
     id: "image-uploader",
-    title: "Image Uploader (NestJS + JWT)",
+    title: "Image Uploader (NestJS + JWT + AWS S3)",
     year: 2024,
     tags: ["NestJS", "S3", "JWT", "PostgreSQL"],
-    blurb: "Role-gated gallery with secure uploads and per-user access.",
+    blurb: "Role-gated gallery with secure uploads and per-user access. Images uploaded on AWS S3 Bucket",
     links: {
       github: "https://github.com/SharjeelAhmed2/NestJS-with-S3",
     },
   },
   {
     id: "task-manager",
-    title: "Task Manager (Node + React)",
+    title: "Task Management Application (Node + React)",
     year: 2023,
     tags: ["Express", "React", "MongoDB"],
-    blurb: "Simple CRUD tasks with filters, due dates, and Kanban view.",
+    blurb: "",
     links: {
       github: "https://github.com/SharjeelAhmed2/Task-Management-App",
+    },
+  },
+    {
+    id: "crm-pipeline",
+    title: "CRM Pipeline",
+    year: 2023,
+    tags: ["React"],
+    blurb: "Chrome extension that enhances Gmail with CRM pipeline functionality, helping you manage your email communications more efficiently.",
+    links: {
+      github: "https://github.com/SharjeelAhmed2/CRM-Pipeline",
     },
   },
 ];
@@ -94,7 +104,14 @@ export default function App() {
             <a href="#projects" className="hover:text-white/90">Projects</a>
             <a href="#about" className="hover:text-white/90">About</a>
             <a href="#contact" className="hover:text-white/90">Contact</a>
-            <a href="/Sharjeel_Resume.pdf" className="px-3 py-1.5 rounded-xl bg-white text-neutral-900 font-medium hover:opacity-90">Resume</a>
+            <a 
+              href="/Sharjeel_Resume.pdf" 
+              target="_blank" 
+              rel="noreferrer"
+              className="px-3 py-1.5 rounded-xl bg-white text-neutral-900 font-medium hover:opacity-90"
+            >
+              Resume
+            </a>
           </nav>
         </div>
       </header>
@@ -231,9 +248,11 @@ export default function App() {
         <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6">
           <h2 className="text-2xl font-bold tracking-tight">About</h2>
           <p className="mt-3 text-neutral-300">
-            I’m a software engineer with ~3.5+ years experience across Core Banking (Temenos Transact)
-            and product work. I enjoy building reliable APIs, clean UIs, and small practical
-            AI features that make products feel smarter without getting in the way.
+           Software Engineer | Backend & Full-Stack | Spring Boot • Node.js • PostgreSQL • T24
+          With over 3.5 years of professional experience in fintech and enterprise systems, I specialize in building scalable backend services, automating workflows, and integrating AI into modern applications.
+          I’ve worked on projects ranging from core banking APIs (T24) to full-stack budget management apps using GPT-4. My passion lies in solving real-world problems through elegant code — and learning new tech stacks like NestJS, FastAPI, and AWS along the way.
+
+          Currently open to new challenges where I can grow, contribute, and bring fun tech ideas to life.
           </p>
         </div>
       </section>
@@ -244,7 +263,7 @@ export default function App() {
           <h2 className="text-2xl font-bold tracking-tight">Contact</h2>
           <p className="mt-3 text-neutral-300">
             Open to backend, full‑stack, and AI‑adjacent roles. The fastest way to reach me:
-            <a className="ml-1 underline decoration-dotted underline-offset-4" href="mailto:you@example.com">you@example.com</a>.
+            <a className="ml-1 underline decoration-dotted underline-offset-4" href="mailto:sharjeelahmed614@gmail.com">sharjeelahmed614@gmail.com</a>.
           </p>
         </div>
       </section>
